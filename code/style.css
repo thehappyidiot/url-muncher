@@ -8,21 +8,21 @@
     }
 
     100% {
-        transform: translateY(500px);
+        transform: translateY(300px);
         opacity: 0;
     }
 }
 
 .falling-char {
-    position: absolute;
+    position: fixed;
     z-index: 10000;
-    left: calc(155px + var(--left-offset));
+    left: calc(193px + var(--left-offset)) !important;
     top: 0px;
     padding: 0;
     margin: 0;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     font-size: 14px;
     font-family: system-ui !important;
-    animation: fall 2s cubic-bezier(0.32, 0, 0.67, 0) both;
+    animation: fall 1s cubic-bezier(0.32, 0, 0.67, 0) both;
 }
