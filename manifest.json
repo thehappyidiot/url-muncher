@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "URL Muncher",
+  "version": "1.0",
+  "description": "I'm a little goblin lol",
+  "permissions": ["activeTab", "scripting"],
+  "action": {},
+  "background": {
+    "matches": ["*"],
+    "service_worker": "code/background.js"
+  }
+}
