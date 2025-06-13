@@ -90,14 +90,16 @@ function main() {
         }
         
         history.pushState(null, "", URL);
-        if (pathRemaining < 0) {
+        if (pathRemaining <= 0) {
             history.pushState(null, "", origin + "/" + demon);
             clearInterval(interval);
             signalToChromeThatWeAreDone();
             document.querySelectorAll(".falling-char").forEach((elt) => {
                 elt.remove();
             });
-            return;
+
+            // Screw their work:
+            window.location.replace(origin);
         }
     }, 50);
 }
