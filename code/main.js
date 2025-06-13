@@ -1,4 +1,4 @@
-const signalToChromeThatWeAreDone = () => {
+function signalToChromeThatWeAreDone() {
     chrome.runtime.sendMessage({ action: "finished" });
 };
 
@@ -13,7 +13,7 @@ function listenForStop() {
 }
 
 const demon = "👹";
-const demonBacksUpBy = 3;
+const demonBacksUpBy = 4;
 const nbsp = String.fromCharCode(160);
 
 let lastIdx = 0;
@@ -23,7 +23,8 @@ const sayingTicks = 10;
 
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
-const fontGuess = "13.9px system-ui";
+//const fontGuess = "13.9px system-ui";
+const fontGuess = "14px system-ui";
 ctx.font = fontGuess;
 
 const elt = document.createElement("div");
@@ -49,7 +50,7 @@ function selectSaying() {
 
 function main() {
     stopped = false;
-    let pathname = location.pathname;
+    let pathname = location.pathname + location.hash;
     if (pathname.startsWith("/")) {
         pathname = pathname.slice(1, pathname.length);
     }
@@ -67,7 +68,7 @@ function main() {
             const elt = document.createElement("span");
             elt.textContent = pathname[pathRemaining];
             elt.classList.add("falling-char");
-            const targetText = origin.replace("https://www.", "") + "/" + pathname.slice(0, pathRemaining);
+            const targetText = origin.replace("https://", "").replace("www.", "") + "/" + pathname.slice(0, pathRemaining);
             const textLength = measureUrlText(targetText);
             console.log(`${targetText} - ${Math.floor(textLength)}`);
             elt.style.setProperty("--left-offset", `${textLength}px`);
@@ -101,7 +102,7 @@ function main() {
             // Screw their work:
             window.location.replace(origin);
         }
-    }, 50);
+    }, 45);
 }
 
 
